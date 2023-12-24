@@ -14,7 +14,7 @@ jobs:
       HOST: root@89.248.204.114
       DEPLOY_DIRECTORY: /root/apps/url-shortener
       CONFIG_PATH: /root/apps/url-shortener/config/prod.yaml
-      ENV_FILE_PATH: /root/apps/url-shortener/config.env
+      ENV_FILE_PATH: /root/apps/url-shortener/.env
 
     steps:
       - name: Checkout repository
@@ -58,7 +58,7 @@ jobs:
           touch ${{ env.ENV_FILE_PATH }} && \
           chmod 600 ${{ env.ENV_FILE_PATH }} && \
           echo 'CONFIG_PATH=${{ env.CONFIG_PATH }}' > ${{ env.ENV_FILE_PATH }} && \
-          echo 'HTTP_SERVER_USER=${{ secrets.AUTH_USER }}' > ${{ env.ENV_FILE_PATH }} && \
+          echo 'HTTP_SERVER_USER=${{ secrets.AUTH_USER }}' >> ${{ env.ENV_FILE_PATH }} && \
           echo 'HTTP_SERVER_PASSWORD=${{ secrets.AUTH_PASS }}' >> ${{ env.ENV_FILE_PATH }}"
       - name: Copy systemd service file
         run: |

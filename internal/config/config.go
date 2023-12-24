@@ -18,7 +18,7 @@ type HttpServer struct {
 	Address     string        `yaml:"address" env-default:"localhost:8082"`
 	Timeout     time.Duration `yaml:"timeout" env-default:"4s"`
 	IdleTimeout time.Duration `idle_timeout:"timeout" env-default:"60s"`
-	User        string        `yaml:"user" env-required:"true"`
+	User        string        `yaml:"user" env-required:"true" env:"HTTP_SERVER_USER"`
 	Password    string        `yaml:"password" env-required:"true" env:"HTTP_SERVER_PASSWORD"`
 }
 
